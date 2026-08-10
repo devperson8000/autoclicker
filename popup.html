@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Easy Autoclicker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <span class="dot" id="statusDot"></span>
+        <h1>Easy Autoclicker</h1>
+      </div>
+      <p class="status-text" id="statusText">Inactive</p>
+    </header>
+
+    <section class="card">
+      <label for="cpsInput">Clicks per second</label>
+      <div class="cps-row">
+        <input type="range" id="cpsSlider" min="1" max="50" value="10" />
+        <input type="number" id="cpsInput" min="1" max="1000" value="10" />
+      </div>
+    </section>
+
+    <section class="card">
+      <label>Mode</label>
+      <div class="segmented" id="modeSwitch">
+        <button type="button" class="seg-btn active" data-mode="toggle">Always On</button>
+        <button type="button" class="seg-btn" data-mode="hold">Hold Key</button>
+      </div>
+    </section>
+
+    <section class="card" id="toggleSection">
+      <button id="toggleBtn" class="main-btn">Start Autoclicking</button>
+      <p class="hint">Click once to start, click again to stop.</p>
+    </section>
+
+    <section class="card hidden" id="holdSection">
+      <div class="hold-row">
+        <div>
+          <label>Hold key</label>
+          <button id="hotkeyBtn" class="key-btn">F6</button>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="holdEnableToggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="hint">Enable the switch, then hold the key on the page to autoclick.</p>
+    </section>
+
+    <p class="warning hidden" id="warningText">
+      This page doesn't support autoclicking (e.g. a Chrome system page). Open a regular website and try again.
+    </p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
