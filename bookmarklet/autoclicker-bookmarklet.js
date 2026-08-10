@@ -4,7 +4,25 @@
     return;
   }
 
-  const state = { cps: 10, mode: "toggle", hotkey: "F6", hotkeyCode: "F6", holdEnabled: false };
+  const STORAGE_KEY = "__eacSettings";
+  const defaults = { cps: 10, mode: "toggle", hotkey: "F6", hotkeyCode: "F6", holdEnabled: false };
+  let saved = {};
+  try {
+    saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch (e) {
+    saved = {};
+  }
+  const state = { ...defaults, ...saved };
+
+  function saveSettings() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        cps: state.cps, mode: state.mode, hotkey: state.hotkey,
+        hotkeyCode: state.hotkeyCode, holdEnabled: state.holdEnabled
+      }));
+    } catch (e) {}
+  }
+
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let timer = null;
@@ -42,6 +60,7 @@
       listeningForKey = false;
       state.hotkey = e.key.length === 1 ? e.key.toUpperCase() : e.key;
       state.hotkeyCode = e.code;
+      saveSettings();
       render();
       return;
     }
@@ -100,14 +119,14 @@
     panel.querySelectorAll("button").forEach((b) => (b.style.cssText += "background:#333;color:#fff;border:none;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;"));
 
     panel.querySelector("#eacClose").onclick = () => { stop(); panel.remove(); window.__eacToggle = null; };
-    panel.querySelector("#eacCps").oninput = (e) => { state.cps = Math.max(parseInt(e.target.value, 10) || 1, 1); if (clicking) { stop(); start(); } };
-    panel.querySelector("#eacModeToggle").onclick = () => { state.mode = "toggle"; stop(); render(); };
-    panel.querySelector("#eacModeHold").onclick = () => { state.mode = "hold"; stop(); render(); };
+    panel.querySelector("#eacCps").oninput = (e) => { state.cps = Math.max(parseInt(e.target.value, 10) || 1, 1); saveSettings(); if (clicking) { stop(); start(); } };
+    panel.querySelector("#eacModeToggle").onclick = () => { state.mode = "toggle"; saveSettings(); stop(); render(); };
+    panel.querySelector("#eacModeHold").onclick = () => { state.mode = "hold"; saveSettings(); stop(); render(); };
     panel.querySelector("#eacKeyBtn").onclick = () => { listeningForKey = true; render(); };
     if (state.mode === "toggle") {
       panel.querySelector("#eacStartStop").onclick = () => (clicking ? stop() : start());
     } else {
-      panel.querySelector("#eacHoldEnable").onchange = (e) => { state.holdEnabled = e.target.checked; };
+      panel.querySelector("#eacHoldEnable").onchange = (e) => { state.holdEnabled = e.target.checked; saveSettings(); };
     }
   }
 
