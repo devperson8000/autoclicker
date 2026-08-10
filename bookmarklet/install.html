@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Easy Autoclicker Bookmarklet</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 16px; color: #222; }
+  .bm-link {
+    display: inline-block; background: #6c5ce7; color: #fff; padding: 10px 18px;
+    border-radius: 8px; text-decoration: none; font-weight: 600; margin: 16px 0;
+  }
+  ol { line-height: 1.7; }
+  code { background: #f2f2f2; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h1>Easy Autoclicker (Bookmarklet)</h1>
+  <p>Drag the button below to your bookmarks bar. No install, no admin permissions needed.</p>
+  <p><a class="bm-link" href="javascript:(function()%7Bif(window.__eacToggle)%7Bwindow.__eacToggle()%3Breturn%7Dconst%20a%3D%7Bcps%3A10%2Cmode%3A%22toggle%22%2Chotkey%3A%22F6%22%2ChotkeyCode%3A%22F6%22%2CholdEnabled%3A!1%7D%3Blet%20b%3Dwindow.innerWidth%2F2%2Cc%3Dwindow.innerHeight%2F2%2Cd%3Dnull%2Ce%3D!1%2Cf%3D!1%2Cg%3D!1%3Bdocument.addEventListener(%22mousemove%22%2C(h)%3D%3E%7Bb%3Dh.clientX%3Bc%3Dh.clientY%7D%2C%7Bpassive%3A!0%2Ccapture%3A!0%7D)%3Bfunction%20i()%7Bconst%20h%3Ddocument.elementFromPoint(b%2Cc)%7C%7Cdocument.body%2Cj%3D%7Bbubbles%3A!0%2Ccancelable%3A!0%2Cview%3Awindow%2CclientX%3Ab%2CclientY%3Ac%2Cbutton%3A0%7D%3Bh.dispatchEvent(new%20MouseEvent(%22mousedown%22%2C%7B...j%2Cbuttons%3A1%7D))%3Bh.dispatchEvent(new%20MouseEvent(%22mouseup%22%2C%7B...j%2Cbuttons%3A0%7D))%3Bh.dispatchEvent(new%20MouseEvent(%22click%22%2C%7B...j%2Cbuttons%3A0%7D))%7Dfunction%20k()%7Bif(e)return%3Be%3D!0%3Bd%3DsetInterval(i%2CMath.max(1E3%2FMath.max(a.cps%2C1)%2C1))%3Bl()%7Dfunction%20m()%7Be%3D!1%3Bd%26%26clearInterval(d)%3Bd%3Dnull%3Bl()%7Ddocument.addEventListener(%22keydown%22%2C(h)%3D%3E%7Bif(g)%7Bh.preventDefault()%3Bg%3D!1%3Ba.hotkey%3D1%3D%3D%3Dh.key.length%3Fh.key.toUpperCase()%3Ah.key%3Ba.hotkeyCode%3Dh.code%3Bl()%3Breturn%7Dif(h.code%3D%3D%3Da.hotkeyCode)%7Bif(%22toggle%22%3D%3D%3Da.mode)e%3Fm()%3Ak()%3Belse%20if(%22hold%22%3D%3D%3Da.mode%26%26a.holdEnabled%26%26!f)%7Bf%3D!0%3Bk()%7D%7D%7D)%3Bdocument.addEventListener(%22keyup%22%2C(h)%3D%3E%7Bh.code%3D%3D%3Da.hotkeyCode%26%26(f%3D!1%2C%22hold%22%3D%3D%3Da.mode%26%26m())%7D)%3Bconst%20n%3Ddocument.createElement(%22div%22)%3Bn.style.cssText%3D%22position%3Afixed%3Btop%3A16px%3Bright%3A16px%3Bz-index%3A2147483647%3Bbackground%3A%231c1d24%3Bcolor%3A%23f2f2f7%3Bfont%3A12px%2F1.4%20-apple-system%2Csans-serif%3Bborder-radius%3A10px%3Bpadding%3A12px%3Bwidth%3A230px%3Bbox-shadow%3A0%204px%2020px%20rgba(0%2C0%2C0%2C.4)%3Bcursor%3Amove%3Buser-select%3Anone%3B%22%3Bdocument.body.appendChild(n)%3Blet%20o%3D!1%2Cp%3D0%2Cq%3D0%3Bn.addEventListener(%22mousedown%22%2C(h)%3D%3E%7Bif(%22INPUT%22%3D%3D%3Dh.target.tagName%7C%7C%22BUTTON%22%3D%3D%3Dh.target.tagName)return%3Bo%3D!0%3Bp%3Dh.clientX-n.offsetLeft%3Bq%3Dh.clientY-n.offsetTop%7D)%3Bdocument.addEventListener(%22mousemove%22%2C(h)%3D%3E%7Bo%26%26(n.style.left%3Dh.clientX-p%2B%22px%22%2Cn.style.top%3Dh.clientY-q%2B%22px%22%2Cn.style.right%3D%22auto%22)%7D)%3Bdocument.addEventListener(%22mouseup%22%2C()%3D%3E%7Bo%3D!1%7D)%3Bfunction%20l()%7Bn.innerHTML%3D'%3Cdiv%20style%3D%22display%3Aflex%3Bjustify-content%3Aspace-between%3Balign-items%3Acenter%3Bmargin-bottom%3A8px%3B%22%3E'%2B'%3Cb%3EEasy%20Autoclicker%3C%2Fb%3E%3Cspan%20id%3D%22eacClose%22%20style%3D%22cursor%3Apointer%3Bopacity%3A.6%3B%22%3E%26times%3B%3C%2Fspan%3E%3C%2Fdiv%3E'%2B'%3Cdiv%20style%3D%22margin-bottom%3A6px%3B%22%3ECPS%3A%20%3Cinput%20id%3D%22eacCps%22%20type%3D%22number%22%20min%3D%221%22%20max%3D%221000%22%20value%3D%22'%2Ba.cps%2B'%22%20style%3D%22width%3A60px%3B%22%3E%3C%2Fdiv%3E'%2B'%3Cdiv%20style%3D%22margin-bottom%3A6px%3B%22%3E'%2B'%3Cbutton%20id%3D%22eacModeToggle%22%20style%3D%22'%2B(%22toggle%22%3D%3D%3Da.mode%3F%22background%3A%236c5ce7%3Bcolor%3A%23fff%3B%22%3A%22%22)%2B'%22%3EAlways%20On%3C%2Fbutton%3E%20'%2B'%3Cbutton%20id%3D%22eacModeHold%22%20style%3D%22'%2B(%22hold%22%3D%3D%3Da.mode%3F%22background%3A%236c5ce7%3Bcolor%3A%23fff%3B%22%3A%22%22)%2B'%22%3EHold%20Key%3C%2Fbutton%3E%3C%2Fdiv%3E'%2B'%3Cdiv%20style%3D%22margin-bottom%3A6px%3B%22%3EHotkey%3A%20%3Cbutton%20id%3D%22eacKeyBtn%22%3E'%2B(g%3F%22Press%20a%20key...%22%3Aa.hotkey)%2B%22%3C%2Fbutton%3E%3C%2Fdiv%3E%22%2B(%22toggle%22%3D%3D%3Da.mode%3F'%3Cbutton%20id%3D%22eacStartStop%22%20style%3D%22width%3A100%25%3Bpadding%3A6px%3B%22%3E'%2B(e%3F%22Stop%22%3A%22Start%22)%2B%22%3C%2Fbutton%3E%22%3A'%3Clabel%3E%3Cinput%20id%3D%22eacHoldEnable%22%20type%3D%22checkbox%22%20'%2B(a.holdEnabled%3F%22checked%22%3A%22%22)%2B%22%3E%20Enable%20hold-to-click%3C%2Flabel%3E%22)%2B'%3Cdiv%20style%3D%22margin-top%3A6px%3Bopacity%3A.7%3B%22%3E'%2B(e%3F%22Active%20-%20clicking%22%3A%22Inactive%22)%2B%22%3C%2Fdiv%3E%22%3Bn.querySelectorAll(%22button%22).forEach((h)%3D%3E%7Bh.style.cssText%2B%3D%22background%3A%23333%3Bcolor%3A%23fff%3Bborder%3Anone%3Bborder-radius%3A6px%3Bpadding%3A4px%208px%3Bcursor%3Apointer%3Bfont-size%3A11px%3B%22%7D)%3Bn.querySelector(%22%23eacClose%22).onclick%3D()%3D%3E%7Bm()%3Bn.remove()%3Bwindow.__eacToggle%3Dnull%7D%3Bn.querySelector(%22%23eacCps%22).oninput%3D(h)%3D%3E%7Ba.cps%3DMath.max(parseInt(h.target.value%2C10)%7C%7C1%2C1)%3Be%26%26(m()%2Ck())%7D%3Bn.querySelector(%22%23eacModeToggle%22).onclick%3D()%3D%3E%7Ba.mode%3D%22toggle%22%3Bm()%3Bl()%7D%3Bn.querySelector(%22%23eacModeHold%22).onclick%3D()%3D%3E%7Ba.mode%3D%22hold%22%3Bm()%3Bl()%7D%3Bn.querySelector(%22%23eacKeyBtn%22).onclick%3D()%3D%3E%7Bg%3D!0%3Bl()%7D%3B%22toggle%22%3D%3D%3Da.mode%3Fn.querySelector(%22%23eacStartStop%22).onclick%3D()%3D%3E%7Be%3Fm()%3Ak()%7D%3An.querySelector(%22%23eacHoldEnable%22).onchange%3D(h)%3D%3E%7Ba.holdEnabled%3Dh.target.checked%7D%7Dwindow.__eacToggle%3D()%3D%3E%7Bn.style.display%3D%22none%22%3D%3D%3Dn.style.display%3F%22block%22%3A%22none%22%7D%3Bl()%7D)()%3B">🖱️ Easy Autoclicker</a></p>
+
+  <h2>Setup</h2>
+  <ol>
+    <li>Make sure your bookmarks bar is visible (<code>Cmd+Shift+B</code> in Chrome/Safari).</li>
+    <li>Drag the purple <strong>🖱️ Easy Autoclicker</strong> button above onto your bookmarks bar.</li>
+    <li>Go to any normal webpage.</li>
+    <li>Click the bookmark. A small control panel appears in the top-right corner of the page.</li>
+  </ol>
+
+  <h2>If dragging doesn't work</h2>
+  <p>Some managed browsers block drag-and-drop of bookmarks too. If so, add it manually instead:</p>
+  <ol>
+    <li>Right-click your bookmarks bar → <strong>Add Page</strong> (or <strong>New Bookmark</strong>).</li>
+    <li>Name it "Easy Autoclicker".</li>
+    <li>For the URL, open <code>bookmarklet-uri.txt</code> in this folder, copy its entire contents, and paste it as the URL.</li>
+    <li>Save. Click it on any webpage to open the panel.</li>
+  </ol>
+
+  <h2>Using it</h2>
+  <ul>
+    <li>Set CPS in the panel.</li>
+    <li><strong>Always On</strong>: click Start (or press the hotkey, default <code>F6</code>) to click continuously wherever your mouse is; click Stop / press the hotkey again to end.</li>
+    <li><strong>Hold Key</strong>: check "Enable hold-to-click", then hold the hotkey down — it clicks while held, stops on release.</li>
+    <li>Click the hotkey button in the panel, then press any key, to change it.</li>
+    <li>Drag the panel by its top bar to move it. Click the × to close it.</li>
+  </ul>
+
+  <h2>Limitations</h2>
+  <ul>
+    <li>You have to click the bookmark again each time you load/refresh a page — it doesn't persist like an extension.</li>
+    <li>Only clicks elements on the current page; it can't click outside the browser window.</li>
+    <li>Some sites (canvas-based games, strict anti-bot checks) may not respond to script-simulated clicks.</li>
+  </ul>
+</body>
+</html>
